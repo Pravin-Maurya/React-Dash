@@ -1,6 +1,32 @@
 In this project, let's build an **Alert Notifications** app by applying the concepts we have learned till now.
 
 ### Refer to the image below:
+import React from 'react';
+import paginationStyle from '../styles/pagination.module.css';
+
+const Pagination = ({ totalPages, paginate, currentPage }) => {
+  const pageNumbers = [];
+
+  for (let i = 1; i <= totalPages; i++) {
+    pageNumbers.push(i);
+  }
+
+  return (
+    <nav>
+      <ul className={paginationStyle.pagination}>
+        {pageNumbers.map(number => (
+          <li key={number} 
+          className={`${paginationStyle.pageItem} ${(number===currentPage) ? (paginationStyle.activePage): null}`}
+          onClick={() => paginate(number)} >
+              {number}
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+};
+
+export default Pagination;
 
 <br/>
 <div style="text-align: center;">
